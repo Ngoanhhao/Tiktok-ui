@@ -1,8 +1,8 @@
-import './GlobalStyles.scss';
+import './GlobalStyles.module.scss';
 
 function GlobalStyles({ children }) {
     return (
-        <h1>test</h1>
+        children
     )
 }
 
