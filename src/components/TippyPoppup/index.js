@@ -1,0 +1,1 @@
+export {default as TippyWraper} from './TippyWraper.js';

@@ -1,0 +1,26 @@
+.account {
+    display: flex;
+    padding: 9px 16px;
+}
+.avatar {
+    margin-right: 12px;
+
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+.Infomation {
+    h4 {
+        font-weight: 500;
+        .check-icon {
+            color: rgb(32, 213, 236);
+            margin-left: 4px;
+        }
+    }
+    p {
+        color: rgba(22, 24, 35, 0.5);
+        font-weight: 400;
+    }
+}

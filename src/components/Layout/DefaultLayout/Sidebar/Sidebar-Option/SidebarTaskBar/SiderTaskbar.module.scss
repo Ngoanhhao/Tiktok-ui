@@ -1,0 +1,21 @@
+.taskbar-wrapper {
+    .foryou,
+    .following,
+    .live {
+        padding: 8px;
+        line-height: 1.8;
+        &:hover{
+            background: rgba(22, 24, 35, 0.03);
+            cursor: pointer;
+        }
+    }
+    .foryou{
+        color: rgba(254, 44, 85, 1);
+    }
+    h2{
+        font-size: 1.8rem;
+    }
+    .icon{
+        margin-right: 8px;
+    }
+}

@@ -1,0 +1,40 @@
+.settings{
+    &:hover{
+        cursor: pointer;
+    }
+    .menu-item{
+        text-align: start;
+        width: 100%;
+        margin-left: 0 !important;
+        padding: 12px 8px 12px 16px;
+        font-weight: 400;
+    }
+    .title{
+        margin-left: 8px;
+    }
+    .Settings-icon{
+        max-width: 20px;
+        max-height: 20px;
+    }
+    .header{
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-top: -8px;
+        height: 50px;
+        .header-icon{
+            padding-left: 28px;
+            font-size: 16px;
+            height: 100%;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        p{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    }
+}

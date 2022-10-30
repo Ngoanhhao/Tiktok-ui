@@ -1,0 +1,23 @@
+.SidebarLogin-Wrapper{
+    padding: 20px 8px 24px 8px;
+    p{
+        color: rgba(22, 24, 35, .5);
+        font-size: 16px;
+        line-height: 22px;
+    }
+    button{
+        color: rgba(254, 44, 85, 1);
+        border: 1px solid rgba(254, 44, 85, 1);
+        border-radius: 5px;
+        background: transparent;
+        width: 324px;
+        height: 48px;
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 20px;
+        &:hover{
+            background-color: rgba(254, 44, 85, 0.06);
+            cursor: pointer;
+        }
+    }
+}
