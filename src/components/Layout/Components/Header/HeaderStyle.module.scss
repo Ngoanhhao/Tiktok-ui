@@ -81,13 +81,12 @@ Header {
     .plus {
         margin-right: 6px;
     }
-    .settings {
-        padding: 2px 9px;
+    .plane,
+    .comment{
+        min-width: 26px;
+        min-height: 26px;
+        font-size: 2rem;
         margin-left: 16px;
-        background: none;
-        &:hover{
-            cursor: pointer;
-        }
     }
 }
 
@@ -95,16 +94,8 @@ Header {
     width: 361px;
 }
 
-.Settings-ResultBox{
-    width: 223px;
-    padding-top: 4px;
-}
-
 .accounts-title {
     padding: 5px 16px;
     color: rgba(22, 24, 35, 0.5);
 }
 
-.menu-box{
-    padding-bottom: 8px;
-}

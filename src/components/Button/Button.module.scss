@@ -17,6 +17,14 @@
         margin-left: 16px;
     }
 }
+
+.hoverNone{
+    &:hover{
+        background: transparent !important;
+        cursor: pointer;
+    }
+}
+
 .primary{
     background: var(--primary);
     color: white;

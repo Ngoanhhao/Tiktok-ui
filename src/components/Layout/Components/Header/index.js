@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './HeaderStyle.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
 import {
@@ -14,17 +15,24 @@ import {
     faCircleQuestion,
     faKeyboard,
     faEarthAsia,
+    faUser,
+    faCoins,
+    faVideo,
+    faGear,
+    faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 
 import { TippyWraper } from '../../../../components/TippyPoppup';
 import { AccountItem } from '../../../AccountItem';
-import { Settings } from '../../../Settings';
+import { Menudropdown } from '../../../Menudropdown';
 import { Button } from '../../../Button';
 
 var cx = classNames.bind(styles);
 
 function Header() {
     var [Results, setResults] = useState([]);
+    var currentUser = true;
     var MENU_ITEMS = {
         items: [
             {
@@ -56,11 +64,46 @@ function Header() {
         ],
     };
 
+    var Login_MenuData = {
+        items: [
+            {
+                icon: faUser,
+                title: 'View profile',
+            },
+            {
+                icon: faCoins,
+                title: 'Get coins',
+            },
+            {
+                icon: faVideo,
+                title: 'LIVE studio',
+            },
+            {
+                icon: faGear,
+                title: 'Settings',
+            },
+            {
+                icon: faUser,
+                title: 'View profile',
+            },
+            ...MENU_ITEMS.items,
+            {
+                icon: faRightFromBracket,
+                title: 'Log out',
+                border_top: true,
+            },
+        ],
+    };
+
     useEffect(() => {
         setTimeout(() => {
             setResults([]);
         }, 0);
     }, []);
+
+    var handleOnchange = (item) => {
+        console.log(item);
+    };
 
     return (
         <header>
@@ -147,7 +190,7 @@ function Header() {
                     </div>
                 </div>
 
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={Results.length > 0}
                     render={(attrs) => (
@@ -181,35 +224,48 @@ function Header() {
                             <FontAwesomeIcon icon={faSearch} />
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
 
                 <div className={cx('header-right')}>
                     <Button p="9px 18px">
                         <FontAwesomeIcon icon={faPlus} className={cx('plus')} />
                         Upload
                     </Button>
-                    <Button primary type="test">
-                        Log in
-                    </Button>
-                    <Tippy
-                        placement="bottom-end"
-                        interactive
-                        render={(attrs) => (
-                            <div
-                                className={cx('Settings-ResultBox')}
-                                tabIndex="-1"
-                                {...attrs}
-                            >
-                                <TippyWraper className={cx('menu-box')}>
-                                    <Settings data={MENU_ITEMS} />
-                                </TippyWraper>
-                            </div>
-                        )}
-                    >
-                        <button className={cx('settings')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
-                    </Tippy>
+                    {currentUser ? (
+                        <>
+                            <Tippy content="Messager" delay={[0, 200]}>
+                                <button className={cx('plane')}>
+                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Inbox" delay={[0, 200]}>
+                                <button className={cx('comment')}>
+                                    <FontAwesomeIcon icon={faComment} />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button primary>Log in</Button>
+                        </>
+                    )}
+
+                    {
+                        <Menudropdown
+                            position="bottom-end"
+                            data={currentUser ? Login_MenuData : MENU_ITEMS}
+                            onChange={handleOnchange}
+                        >
+                            {currentUser ? (
+                                <img
+                                    src="https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tiktok-obj/1693582401636354.jpeg?x-expires=1667289600&x-signature=Yh0TTSyCNSHRAuZApRIGmOl8%2BCI%3D"
+                                    alt=""
+                                />
+                            ) : (
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            )}
+                        </Menudropdown>
+                    }
                 </div>
             </div>
         </header>

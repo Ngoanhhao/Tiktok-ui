@@ -16,6 +16,7 @@ function Button({
     small,
     p,
     className,
+    hoverNone,
     ...all
 }) {
     var Button = 'button';
@@ -41,7 +42,8 @@ function Button({
                 outline_none,
                 small,
                 type,
-                [className]: className
+                hoverNone,
+                [className]: className,
             })}
             style={p ? { padding: p } : undefined}
             {...comp}
