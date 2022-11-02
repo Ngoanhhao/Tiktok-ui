@@ -17,6 +17,10 @@ var publicRoute = [
         path: '/Update',
         component: Update,
         layout: HeaderOnly,
+    },
+    {
+        path: '/@:nickname',
+        component: Update,
     }
 ];
 
