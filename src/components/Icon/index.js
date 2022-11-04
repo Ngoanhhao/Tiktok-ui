@@ -1,3 +1,4 @@
+import React from 'react';
 export var Logo = () => {
     return (
         <svg height="42" width="118" alt="TikTok">

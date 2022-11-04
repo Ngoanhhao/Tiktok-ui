@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './SidebarStyle.module.scss';
 import classNames from 'classnames/bind';
 
