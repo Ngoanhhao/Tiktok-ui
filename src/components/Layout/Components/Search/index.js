@@ -9,12 +9,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
 
 import { TippyWraper } from '../../../../components/TippyPoppup';
 import { AccountItem } from '../../../AccountItem';
 import { Button } from '../../../../components/Button';
-import { useDebounce } from "../../../Hooks"
+import { useDebounce } from '../../../Hooks';
 
 var cx = classNames.bind(styles);
 
@@ -24,7 +23,7 @@ function Search() {
     var [ShowResults, setShowResults] = useState(true);
     var [loadding, setLoadding] = useState(false);
 
-    var newvalue = useDebounce(searchValue,500);
+    var newvalue = useDebounce(searchValue, 500);
 
     var inputRef = useRef();
     useEffect(() => {
@@ -33,7 +32,7 @@ function Search() {
             return;
         }
         setLoadding(true);
-        
+
         fetch(
             `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
                 newvalue,

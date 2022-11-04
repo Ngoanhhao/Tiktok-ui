@@ -21,8 +21,8 @@ import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { Menudropdown } from '../../../Menudropdown';
 import { Button } from '../../../Button';
 import { Logo } from '../../../../components/Icon';
-import Img from "../../../../components/Img"
-import Search from "../Search";
+import Img from '../../../../components/Img';
+import Search from '../Search';
 
 var cx = classNames.bind(styles);
 
@@ -90,8 +90,6 @@ function Header() {
         ],
     };
 
-
-
     var handleOnchange = (item) => {
         console.log(item);
     };
@@ -105,7 +103,7 @@ function Header() {
                     </div>
                 </div>
                 {/* search */}
-                <Search/>
+                <Search />
 
                 <div className={cx('header-right')}>
                     <Button p="9px 18px">
@@ -138,10 +136,7 @@ function Header() {
                             onChange={handleOnchange}
                         >
                             {currentUser ? (
-                                <Img
-                                    src=""
-                                    alt=""
-                                />
+                                <Img src="https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tiktok-obj/1693582401636354.jpeg?x-expires=1667732400&x-signature=VIS632e3rb3XID6YVkd3estq9C0%3D" alt="" />
                             ) : (
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             )}
