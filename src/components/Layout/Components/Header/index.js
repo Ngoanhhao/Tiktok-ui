@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import styles from './HeaderStyle.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
@@ -17,12 +15,15 @@ import {
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 
+import styles from './HeaderStyle.module.scss';
 import { Menudropdown } from '../../../Menudropdown';
 import { Button } from '../../../Button';
 import { Logo } from '../../../../components/Icon';
 import Img from '../../../../components/Img';
 import Search from '../Search';
+import RoutesConfig from "../../../../RoutesConfig/RoutesConfig"
 
 var cx = classNames.bind(styles);
 
@@ -44,6 +45,7 @@ function Header() {
                             code: 'en',
                             title: 'English',
                         },
+                        
                     ],
                 },
             },
@@ -99,7 +101,7 @@ function Header() {
             <div className={cx('header-wrapper')}>
                 <div className={cx('header-content')}>
                     <div className={cx('logo')}>
-                        <Logo />
+                        <Link to={RoutesConfig.Home}><Logo /></Link>
                     </div>
                 </div>
                 {/* search */}
@@ -132,6 +134,7 @@ function Header() {
                     {
                         <Menudropdown
                             position="bottom-end"
+                            className={cx('MenuSettings')}
                             data={currentUser ? Login_MenuData : MENU_ITEMS}
                             onChange={handleOnchange}
                         >

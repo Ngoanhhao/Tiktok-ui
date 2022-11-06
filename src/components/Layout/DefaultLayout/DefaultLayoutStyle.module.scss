@@ -1,6 +1,6 @@
 .container {
     max-width: var(--Default-width);
-    margin: auto;
+    margin: var(--Default-header-height) auto 0 auto;
     display: flex;
 }
 .content{

@@ -13,15 +13,50 @@ import { TippyWraper } from '../TippyPoppup';
 
 var cx = classNames.bind(styles);
 
-function Menudropdown({ data = [], onChange = () => {}, position, children }) {
+function Menudropdown({ data = [], onChange = () => {}, position, children, hideOnClick = false, className}) {
     var [menuData, setmenuData] = useState([data]);
-
+    var [fontWeight,setfontWeight] = useState(false)
     var current = menuData[menuData.length - 1];
+
+    var renderItem = (current) => {
+        return current.items.map((item, index) => {
+            return (
+                <Button
+                    className={cx('menu-item',{border_top: item.border_top},{font_weight_300:fontWeight})}
+                    outline_none
+                    key={index}
+                    to={item.to}
+                    onClick={() => {
+                        if (item.items) {
+                            setmenuData((value) => [
+                                ...value,
+                                item.items,
+                            ]);
+                            setfontWeight(true)
+                        } else {
+                            onChange(item);
+                        }
+                    }}
+                >
+                    {!!item.icon && (
+                        <FontAwesomeIcon
+                            className={cx('Menudropdown-icon')}
+                            icon={item.icon}
+                        />
+                    )}
+                    <span className={cx('title')}>
+                        {item.title}
+                    </span>
+                </Button>
+            );
+        })
+    }
 
     return (
         <Tippy
             delay={[0,500]}
             interactive
+            hideOnClick={hideOnClick}
             offset={[10, 0]}
             onHide={()=>{setmenuData(data => data.slice(0,1))}}
             placement={position}
@@ -44,44 +79,47 @@ function Menudropdown({ data = [], onChange = () => {}, position, children }) {
                                                     value.length - 1,
                                                 );
                                             });
+                                            setfontWeight(false)
                                         }}
                                     >
                                         <FontAwesomeIcon icon={faChevronLeft} />
                                     </button>
-                                    <p>{current.title}</p>
+                                    <p className={cx('header-title')}>{current.title}</p>
                                 </div>
                             )}
-
-                            {current.items.map((item, index) => {
-                                return (
-                                    <Button
-                                        className={cx('menu-item',{border_top: item.border_top})}
-                                        outline_none
-                                        key={index}
-                                        to={item.to}
-                                        onClick={() => {
-                                            if (item.items) {
-                                                setmenuData((value) => [
-                                                    ...value,
-                                                    item.items,
-                                                ]);
-                                            } else {
-                                                onChange(item);
-                                            }
-                                        }}
-                                    >
-                                        {!!item.icon && (
-                                            <FontAwesomeIcon
-                                                className={cx('Menudropdown-icon')}
-                                                icon={item.icon}
-                                            />
-                                        )}
-                                        <span className={cx('title')}>
-                                            {item.title}
-                                        </span>
-                                    </Button>
-                                );
-                            })}
+                            <div className={cx(className)}>
+                                {/* {current.items.map((item, index) => {
+                                    return (
+                                        <Button
+                                            className={cx('menu-item',{border_top: item.border_top})}
+                                            outline_none
+                                            key={index}
+                                            to={item.to}
+                                            onClick={() => {
+                                                if (item.items) {
+                                                    setmenuData((value) => [
+                                                        ...value,
+                                                        item.items,
+                                                    ]);
+                                                } else {
+                                                    onChange(item);
+                                                }
+                                            }}
+                                        >
+                                            {!!item.icon && (
+                                                <FontAwesomeIcon
+                                                    className={cx('Menudropdown-icon')}
+                                                    icon={item.icon}
+                                                />
+                                            )}
+                                            <span className={cx('title')}>
+                                                {item.title}
+                                            </span>
+                                        </Button>
+                                    );
+                                })} */}
+                                {renderItem(current)}
+                            </div>
                         </div>
                     </TippyWraper>
                 </div>

@@ -14,6 +14,7 @@ import { TippyWraper } from '../../../../components/TippyPoppup';
 import { AccountItem } from '../../../AccountItem';
 import { Button } from '../../../../components/Button';
 import { useDebounce } from '../../../Hooks';
+import Request from '../../../utils/HttpRequest';
 
 var cx = classNames.bind(styles);
 
@@ -33,31 +34,37 @@ function Search() {
         }
         setLoadding(true);
 
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                newvalue,
-            )}&type=less`,
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                setResults(data.data);
+        const fetchApi = async () => {
+            try {
+                var data = await Request.get(`users/search`, {
+                    params: {
+                        q: newvalue,
+                        type: 'less',
+                    },
+                })
+                setResults(data.data.data);
                 setLoadding(false);
-            })
-            .catch(() => {
+            } catch (error) {
                 setLoadding(false);
-            });
+            }
+           
+        }
+
+        fetchApi();
     }, [newvalue]);
 
     var handleinput = (value = []) => {
-        if (value[0] === ' ') {
-            setsearchValue('');
-        } else {
-            setsearchValue(value);
+        var searchValue = value;
+        // if (searchValue[0] !== ' ') {
+        //     setsearchValue(searchValue);
+        // }
+        if(!searchValue.startsWith(" ")){
+            setsearchValue(searchValue);
         }
     };
 
     return (
-        <>
+        <div>
             <HeadlessTippy
                 interactive
                 onClickOutside={() => setShowResults(false)}
@@ -71,11 +78,13 @@ function Search() {
                         <TippyWraper>
                             <h4 className={cx('accounts-title')}>Accounts</h4>
 
-                            {Results.map((value) => {
-                                return (
-                                    <AccountItem data={value} key={value.id} />
-                                );
-                            })}
+                            <div>
+                                {Results.map((value) => {
+                                    return (
+                                        <AccountItem data={value} key={value.id} />
+                                    );
+                                })}
+                            </div>
 
                             <Button
                                 outline_none
@@ -116,12 +125,12 @@ function Search() {
                             <FontAwesomeIcon icon={faSpinner} />
                         </div>
                     )}
-                    <button className={cx('search-btn')}>
+                    <button className={cx('search-btn')} onMouseDown={e=> e.preventDefault()}>
                         <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </div>
             </HeadlessTippy>
-        </>
+        </div>
     );
 }
 

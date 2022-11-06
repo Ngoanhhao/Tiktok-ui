@@ -3,23 +3,24 @@ import Following from '../pages/Following';
 import Update from '../pages/Update';
 import HeaderOnly from "../components/Layout/HeaderOnly"
 
+import RoutesConfig from "../RoutesConfig/RoutesConfig"
 // Dùng cho những layout chung
 var publicRoute = [
     {
-        path: '/',
+        path: RoutesConfig.Home,
         component: Home,
     },
     {
-        path: '/Following',
+        path: RoutesConfig.Following,
         component: Following,
     },
     {
-        path: '/Update',
+        path: RoutesConfig.Update,
         component: Update,
         layout: HeaderOnly,
     },
     {
-        path: '/@:nickname',
+        path: RoutesConfig.Config,
         component: Update,
     }
 ];

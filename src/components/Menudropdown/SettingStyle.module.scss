@@ -39,6 +39,8 @@
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
+            font-weight: 600;
+            font-size: 1.6rem;
         }
     }
 }
@@ -63,4 +65,8 @@
         width: 32px;
         border-radius: 50%;
     }
+}
+
+.font_weight_300{
+    font-weight: 300 !important;
 }
