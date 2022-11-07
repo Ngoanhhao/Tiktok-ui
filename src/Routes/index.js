@@ -1,26 +1,26 @@
 import Home from '../pages/Home';
 import Following from '../pages/Following';
 import Update from '../pages/Update';
-import HeaderOnly from "../components/Layout/HeaderOnly"
+import HeaderOnly from "../Layout/HeaderOnly"
 
-import RoutesConfig from "../RoutesConfig/RoutesConfig"
+import config from "../RoutesConfig"
 // Dùng cho những layout chung
 var publicRoute = [
     {
-        path: RoutesConfig.Home,
+        path: config.rountes.Home,
         component: Home,
     },
     {
-        path: RoutesConfig.Following,
+        path: config.rountes.Following,
         component: Following,
     },
     {
-        path: RoutesConfig.Update,
+        path: config.rountes.Update,
         component: Update,
         layout: HeaderOnly,
     },
     {
-        path: RoutesConfig.Config,
+        path: config.rountes.Config,
         component: Update,
     }
 ];

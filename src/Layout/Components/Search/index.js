@@ -10,11 +10,11 @@ import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { TippyWraper } from '../../../../components/TippyPoppup';
-import { AccountItem } from '../../../AccountItem';
-import { Button } from '../../../../components/Button';
-import { useDebounce } from '../../../Hooks';
-import Request from '../../../utils/HttpRequest';
+import { TippyWraper } from '../../../components/TippyPoppup';
+import { AccountItem } from '../../../components/AccountItem';
+import { Button } from '../../../components/Button';
+import { useDebounce } from '../../../components/Hooks';
+import Request from '../../../components/utils/HttpRequest';
 
 var cx = classNames.bind(styles);
 

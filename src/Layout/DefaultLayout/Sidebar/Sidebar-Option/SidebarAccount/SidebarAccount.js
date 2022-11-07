@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './SidebarAccount.module.scss';
-import { AccountItem } from "../../../../../AccountItem"
+import { AccountItem } from "../../../../../components/AccountItem"
 
 var cx = classNames.bind(styles);
 

@@ -18,12 +18,12 @@ import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 
 import styles from './HeaderStyle.module.scss';
-import { Menudropdown } from '../../../Menudropdown';
-import { Button } from '../../../Button';
-import { Logo } from '../../../../components/Icon';
-import Img from '../../../../components/Img';
+import { Menudropdown } from '../../../components/Menudropdown';
+import { Button } from '../../../components/Button';
+import { Logo } from '../../../components/Icon';
+import Img from '../../../components/Img';
 import Search from '../Search';
-import RoutesConfig from "../../../../RoutesConfig/RoutesConfig"
+import config from "../../../RoutesConfig"
 
 var cx = classNames.bind(styles);
 
@@ -101,7 +101,7 @@ function Header() {
             <div className={cx('header-wrapper')}>
                 <div className={cx('header-content')}>
                     <div className={cx('logo')}>
-                        <Link to={RoutesConfig.Home}><Logo /></Link>
+                        <Link to={config.rountes.Home}><Logo /></Link>
                     </div>
                 </div>
                 {/* search */}
