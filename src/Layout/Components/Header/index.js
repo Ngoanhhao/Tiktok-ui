@@ -15,7 +15,7 @@ import {
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';  
 
 import styles from './HeaderStyle.module.scss';
 import { Menudropdown } from '../../../components/Menudropdown';
@@ -30,7 +30,7 @@ var cx = classNames.bind(styles);
 function Header() {
     var currentUser = true;
     var MENU_ITEMS = {
-        items: [
+        items: [ 
             {
                 icon: faEarthAsia,
                 title: 'English',
