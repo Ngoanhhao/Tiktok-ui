@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom"
 import {
     faHome,
     faUserGroup,
@@ -14,10 +15,10 @@ function SiderTaskbar() {
     return (
         <div className={cx('taskbar-wrapper')}>
             <div className={cx('foryou')}>
-                <h2>
+                <NavLink to="/">
                     <FontAwesomeIcon className={cx('icon')} icon={faHome} />
-                    For You
-                </h2>
+                    For You 
+                </NavLink>
             </div>
             <div>
                 <h2 className={cx('following')}>

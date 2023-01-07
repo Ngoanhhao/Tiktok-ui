@@ -28,7 +28,7 @@ import config from "../../../RoutesConfig"
 var cx = classNames.bind(styles);
 
 function Header() {
-    var currentUser = true;
+    var currentUser = true ;
     var MENU_ITEMS = {
         items: [ 
             {

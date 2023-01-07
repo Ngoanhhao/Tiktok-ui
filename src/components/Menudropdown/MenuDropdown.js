@@ -18,6 +18,21 @@ function Menudropdown({ data = [], onChange = () => {}, position, children, hide
     var [fontWeight,setfontWeight] = useState(false)
     var current = menuData[menuData.length - 1];
 
+
+    function setDefaultMenu () {
+        setmenuData(data => data.slice(0,1))
+    }
+
+    function handleBack () {
+        setmenuData((value) => {
+            return value.slice(
+                0,
+                value.length - 1,
+            );
+        });
+        setfontWeight(false)
+    }
+
     var renderItem = (current) => {
         return current.items.map((item, index) => {
             return (
@@ -58,7 +73,7 @@ function Menudropdown({ data = [], onChange = () => {}, position, children, hide
             interactive
             hideOnClick={hideOnClick}
             offset={[10, 0]}
-            onHide={()=>{setmenuData(data => data.slice(0,1))}}
+            onHide={setDefaultMenu}
             placement={position}
             render={(attrs) => (
                 <div
@@ -72,15 +87,7 @@ function Menudropdown({ data = [], onChange = () => {}, position, children, hide
                                 <div className={cx('header')}>
                                     <button
                                         className={cx('header-icon')}
-                                        onClick={() => {
-                                            setmenuData((value) => {
-                                                return value.slice(
-                                                    0,
-                                                    value.length - 1,
-                                                );
-                                            });
-                                            setfontWeight(false)
-                                        }}
+                                        onClick={handleBack}
                                     >
                                         <FontAwesomeIcon icon={faChevronLeft} />
                                     </button>

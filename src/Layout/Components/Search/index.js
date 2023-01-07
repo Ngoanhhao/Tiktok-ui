@@ -24,11 +24,11 @@ function Search() {
     var [ShowResults, setShowResults] = useState(true);
     var [loadding, setLoadding] = useState(false);
 
-    var newvalue = useDebounce(searchValue, 500);
+    var DebouncedValue = useDebounce(searchValue, 500);
 
     var inputRef = useRef();
     useEffect(() => {
-        if (!newvalue.trim()) {
+        if (!DebouncedValue.trim()) {
             setResults([]);
             return;
         }
@@ -38,27 +38,26 @@ function Search() {
             try {
                 var data = await Request.get(`users/search`, {
                     params: {
-                        q: newvalue,
+                        q: DebouncedValue,
                         type: 'less',
                     },
-                })
+                });
                 setResults(data.data.data);
                 setLoadding(false);
             } catch (error) {
                 setLoadding(false);
             }
-           
-        }
+        };
 
         fetchApi();
-    }, [newvalue]);
+    }, [DebouncedValue]);
 
     var handleinput = (value = []) => {
         var searchValue = value;
         // if (searchValue[0] !== ' ') {
         //     setsearchValue(searchValue);
         // }
-        if(!searchValue.startsWith(" ")){
+        if (!searchValue.startsWith(' ')) {
             setsearchValue(searchValue);
         }
     };
@@ -81,7 +80,10 @@ function Search() {
                             <div>
                                 {Results.map((value) => {
                                     return (
-                                        <AccountItem data={value} key={value.id} />
+                                        <AccountItem
+                                            data={value}
+                                            key={value.id}
+                                        />
                                     );
                                 })}
                             </div>
@@ -125,7 +127,10 @@ function Search() {
                             <FontAwesomeIcon icon={faSpinner} />
                         </div>
                     )}
-                    <button className={cx('search-btn')} onMouseDown={e=> e.preventDefault()}>
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(e) => e.preventDefault()}
+                    >
                         <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </div>

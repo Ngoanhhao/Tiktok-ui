@@ -29,7 +29,8 @@
         font-size: 1.6rem;
         flex: 1;
         caret-color: var(--primary);
-        font-family: var(--default-font-family);;
+        font-family: var(--default-font-family);
+        padding-right: 30px;
         &:not(:placeholder-shown) ~ .search-btn {
             color: rgba(22, 24, 35, 0.75);
         }
